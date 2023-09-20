@@ -55,7 +55,7 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
     print(netcon.find_prompt())
     if device["device_type"] == "extreme_exos":
         print(netcon.send_config_set(exos_cmd)
-    elif device["device_type"] == "vyos_ssh":
+    if device["device_type"] == "vyos_ssh":
 #        print(netcon.send_command(vyos_cmd))
         pass
     netcon.disconnect()
