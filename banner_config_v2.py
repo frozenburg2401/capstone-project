@@ -4,7 +4,7 @@ from netmiko import ConnectHandler
 #Note: ExOS specifies a limit on the size of the banner to be not more than 79 columns wide and 24 rows long
 BANNER="This is a test for the banner script"
 
-exos_cmd="conf banner before-login"
+exos_cmd="configure banner before-login" + BANNER
 
 vyos_cmd="show config"
 
@@ -48,11 +48,8 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
     print(netcon.find_prompt())
     if device["device_type"] == "extreme_exos":
         print(netcon.send_command(exos_cmd))
-        print(netcon.send_command(BANNER))
-        print(netcon.send_command("\n\n"))
         print(netcon.send_command("show banner"))
         print(netcon.send_command("save conf"))
-        print(netcon.send_command("y\n"))
     elif device["device_type"] == "vyos_ssh":
 #        print(netcon.send_command(vyos_cmd))
         pass
