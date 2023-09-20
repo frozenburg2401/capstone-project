@@ -45,7 +45,7 @@ R2 = {
 
 for device in (MLS1, MLS2, MLS3, R1, R2):
     netcon = ConnectHandler(**device)
-    print("configuring device {device}".format(**device))
+    print(f"configuring device {device}")
     print(netcon.find_prompt())
     if device[device_type] == "extreme_exos":
         netcon.send_command(exos_cmd)
