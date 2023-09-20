@@ -5,9 +5,12 @@ from netmiko import ConnectHandler
 BANNER="This is a test for the banner script"
 
 exos_cmd=[
-    "configure banner before-login",
-    BANNER,
-    "\n"
+    ["configure banner before-login"],
+    [BANNER],
+    ["\n"],
+    ["show banner"],
+    ["save configuration"],
+    ["y"],
 ]
 
 vyos_cmd="show config"
@@ -52,8 +55,6 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
     print(netcon.find_prompt())
     if device["device_type"] == "extreme_exos":
         print(netcon.send_config_set(exos_cmd)
-        print(netcon.send_command("show banner"))
-        netcon.send_command("save conf")
     elif device["device_type"] == "vyos_ssh":
 #        print(netcon.send_command(vyos_cmd))
         pass
