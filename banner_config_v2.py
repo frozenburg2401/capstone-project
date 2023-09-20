@@ -52,6 +52,7 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
             expect_string=r"\n"
         )
         netcon.send_command(BANNER)
+        netcon.send_command()
         print(netcon.send_command("show banner"))
         netcon.send_command("save conf")
     elif device["device_type"] == "vyos_ssh":
