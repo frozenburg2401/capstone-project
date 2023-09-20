@@ -4,13 +4,6 @@ from netmiko import ConnectHandler
 #Note: ExOS specifies a limit on the size of the banner to be not more than 79 columns wide and 24 rows long
 BANNER="This is a test for the banner script"
 
-exos_cmd=[
-    ["configure banner before-login"
-    BANNER,
-    "show banner",
-    "save configuration",
-]
-
 vyos_cmd="show config"
 
 MLS1 = {
