@@ -7,10 +7,8 @@ BANNER="This is a test for the banner script"
 exos_cmd=[
     "configure banner before-login",
     BANNER,
-    "\n",
     "show banner",
     "save configuration",
-    "y",
 ]
 
 vyos_cmd="show config"
