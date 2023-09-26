@@ -51,7 +51,7 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
     netcon = ConnectHandler(**device)
     print(netcon.find_prompt())
     if device["device_type"] == "extreme_exos":
-        output = netcon.send_multiline_timing(exos_cmdlist)
+        output = netcon.send_multiline(exos_cmdlist, strip_prompt=False, strip_command=False)
         output += netcon.send_command("show banner")
         output += netcon.send_command("save configuration")
         print(output)
