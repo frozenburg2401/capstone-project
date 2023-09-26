@@ -56,8 +56,11 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
         '''
         pass
     if device["device_type"] == "vyos_ssh":
-        output = netcon.send_command_set(vyos_cmd)
+        output = netcon.config_mode()
+        output += netcon.send_command(vyos_cmd)
+        output += netcon.exit_config_mode()
         output += netcon.commit()
+        output += netcon.save_config()
         print(output)
     netcon.disconnect()
 
