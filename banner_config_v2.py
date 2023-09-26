@@ -6,7 +6,7 @@ BANNER="This is a test for the banner script"
 
 exos_cmdlist="configure banner\n" + BANNER
 
-vyos_cmd=["set system login banner pre-login " + '"' + BANNER + '"']
+vyos_cmd="set system login banner pre-login " + '"' + BANNER + '"'
 
 MLS1 = {
     "device_type": "extreme_exos",
@@ -57,7 +57,7 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
         pass
     if device["device_type"] == "vyos_ssh":
         output = netcon.config_mode()
-        output += netcon.send_command_set(vyos_cmd, exit_config_mode=False)
+        output += netcon.send_command(vyos_cmd)
         output += netcon.commit()
         output += netcon.save_config()
         print(output)
