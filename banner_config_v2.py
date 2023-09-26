@@ -45,12 +45,11 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
     netcon = ConnectHandler(**device)
     print(netcon.find_prompt())
     if device["device_type"] == "extreme_exos":
-        output = netcon.send_command_timing("configure banner")
-    if "\n" in output:
-        output += netcon.send_command(BANNER)
+        output = netcon.send_command("configure banner" + "\n" + BANNER)
     if BANNER in output:
         output += netcon.send_command("show banner")
         output += netcon.send_command("save configuration")
+        print(output)
     if device["device_type"] == "vyos_ssh":
 #        print(netcon.send_command(vyos_cmd))
         pass
