@@ -5,9 +5,9 @@ from netmiko import ConnectHandler
 BANNER="This is a test for the banner script"
 
 exos_cmdlist=[
-    "configure banner",
-    BANNER,
-    "\n"
+    "configure banner", expect_string(r"[\n]"), strip_prompt=False, strip_command=False,
+    BANNER, expect_string(r"BANNER"), strip_prompt=False, strip_command=False,
+    "\n", strip_prompt=False, strip_command=False
 ]
 
 vyos_cmd="show config"
