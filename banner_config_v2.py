@@ -2,12 +2,11 @@ import paramiko
 from netmiko import ConnectHandler
 
 #Note: ExOS specifies a limit on the size of the banner to be not more than 79 columns wide and 24 rows long
-BANNER="This is a test for the banner script"
+BANNER="This is a test for the banner script\n\n"
 
 exos_cmdlist=[
-    ["configure banner", r"[\n]"],
-    [BANNER, BANNER],
-    ["\n"]
+    "configure banner",
+    BANNER
 ]
 
 vyos_cmd="show config"
@@ -51,7 +50,8 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
     netcon = ConnectHandler(**device)
     print(netcon.find_prompt())
     if device["device_type"] == "extreme_exos":
-        output = netcon.send_multiline(exos_cmdlist, strip_prompt=False, strip_command=False)
+      output = netcon.send_command(exos_cmdlist)
+        print(output)
         output += netcon.send_command("show banner")
         output += netcon.send_command("save configuration")
         print(output)
