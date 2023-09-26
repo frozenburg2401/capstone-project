@@ -13,7 +13,12 @@ device = {
 }
 
 netcon = ConnectHandler(**device)
-output = netcon.send_command(exos_cmdlist, expect_string=r".MLS-1")
+output = netcon.send_command(
+    command_string=exos_cmdlist,
+    expect_string=r".MLS-1")
+    strip_prompt=False,
+    strip_command=False
+)
 output += netcon.send_command("show banner")
 output += netcon.send_command("save configuration")
 print(output)
