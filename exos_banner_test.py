@@ -1,6 +1,6 @@
 import logging
 import paramiko
-from netmiko import ConnectHandler
+from netmiko import ConnectHandler, file_transfer
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -15,11 +15,22 @@ device = {
     "password": "",
 }
 
+#this is exos cli script language, building a script with the banner and saving it
+testfile = ["configure banner", BANNER, chr(10), chr(10)]
+f = open("banner.xsf", "w")
+f.writelines(testfile)
+print(f.read())
+f.close()
+
 netcon = ConnectHandler(**device)
-#long story short, cli prompts get disabled on initialization of the connection
-#this really messes with the banner commands, reenabling it might fix it?
-output += netcon.send_command("enable cli paging")
-output += netcon.send_command("configure banner" + exos_banner)
+#long long story short, exos sucks and needs this long distance runaround to set a banner
+output = file_transfer(
+    netcon,
+    source_file="banner.xsf",
+    dest_file="banner.xsf",
+    overwrite_file=True,
+)
+output += netcon.send_command("load script /usr/local/cfg/banner.xsf"
 output += netcon.send_command("show banner")
 output += netcon.send_command("save configuration")
 print(output)
