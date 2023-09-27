@@ -55,7 +55,14 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
     print(netcon.find_prompt())
     if device["device_type"] == "extreme_exos":
         #long long story short, exos sucks and needs this long distance runaround to set a banner
-        output = netcon.send_command(exos_cmdlist)
+        output = file_transfer(
+            netcon,
+            source_file="banner.xsf",
+            dest_file="banner.xsf",
+            overwrite_file=True,
+        )
+        print(output)
+        output = netcon.send_command("load script /usr/local/cfg/banner.xsf")
         output += netcon.send_command("show banner")
         output += netcon.send_command("save configuration")
         print(output)
