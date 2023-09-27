@@ -51,7 +51,7 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
         #adding file ext for exos config files
         tftp_path += ".cfg"
         output = netcon.save_config()
-        output += netcon.send_command(f"tftp put {tftp_addr} current.cfg {tftp_path})
+        output += netcon.send_command(f"tftp put {tftp_addr} current.cfg {tftp_path}")
         print(output)
     if device["device_type"] == "vyos_ssh":
         #adding txt extension as there isnt a specified format for vyos config files
