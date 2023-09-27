@@ -1,5 +1,8 @@
+import logging
 import paramiko
 from netmiko import ConnectHandler
+
+logging.basicConfig(level=logging.DEBUG)
 
 BANNER="This is a test for the banner script"
 
