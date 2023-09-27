@@ -16,10 +16,9 @@ device = {
 }
 
 #this is exos cli script language, building a script with the banner and saving it
-testfile = ["configure banner", BANNER, chr(10), chr(10)]
+testfile = ["configure banner", chr(10), BANNER, chr(10), chr(10)]
 f = open("banner.xsf", "w")
 f.writelines(testfile)
-print(f.read())
 f.close()
 
 netcon = ConnectHandler(**device)
