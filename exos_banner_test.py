@@ -3,7 +3,7 @@ from netmiko import ConnectHandler
 
 BANNER="This is a test for the banner script"
 
-exos_cmdlist=chr(10) + BANNER + chr(10) + chr(10)
+exos_banner=chr(10) + BANNER + chr(10) + chr(10)
 
 device = {
     "device_type": "extreme_exos",
@@ -13,7 +13,7 @@ device = {
 }
 
 netcon = ConnectHandler(**device)
-output = netcon.send_command("configure banner" + BANNER)
+output = netcon.send_command("configure banner" + exos_banner)
 output += netcon.send_command("show banner")
 output += netcon.send_command("save configuration")
 print(output)
