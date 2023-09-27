@@ -30,7 +30,7 @@ output = file_transfer(
     dest_file="banner.xsf",
     overwrite_file=True,
 )
-output += netcon.send_command("load script /usr/local/cfg/banner.xsf"
+output += netcon.send_command("load script /usr/local/cfg/banner.xsf")
 output += netcon.send_command("show banner")
 output += netcon.send_command("save configuration")
 print(output)
