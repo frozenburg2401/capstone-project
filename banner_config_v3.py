@@ -4,12 +4,7 @@ from netmiko import ConnectHandler
 #Note: ExOS specifies a limit on the size of the banner to be not more than 79 columns wide and 24 rows long
 #The docs for vyos do not specify a limit, it is likely close to the standard 80x24 terminal size though
 #The banner included here is the maximum width allowed
-BANNER=[
-    "##############################################################################", 
-    "  NOTICE: This network device is only to be accessed by authorized personnel  ", 
-    "   of the district. Unauthorized connections will be logged and acted upon.   ", 
-    "##############################################################################"
-]
+BANNER="##############################################################################  NOTICE: This network device is only to be accessed by authorized personnel     of the district. Unauthorized connections will be logged and acted upon.   ##############################################################################"
 
 exos_cmdlist=["configure banner", chr(10), BANNER, chr(10), chr(10)]
 
