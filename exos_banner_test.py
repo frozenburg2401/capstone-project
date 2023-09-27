@@ -16,7 +16,8 @@ device = {
 }
 
 netcon = ConnectHandler(**device)
-output = netcon.send_command("configure banner" + exos_banner)
+output = netcon.send_command("\n")
+output += netcon.send_command("configure banner" + exos_banner)
 output += netcon.send_command("show banner")
 output += netcon.send_command("save configuration")
 print(output)
