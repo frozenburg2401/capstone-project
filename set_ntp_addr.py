@@ -47,7 +47,7 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
         print(output)
     if device["device_type"] == "vyos_ssh":
         output = netcon.config_mode()
-        output += netcon.send_command(f"set service ntp service {ntp_addr} prefer")
+        output += netcon.send_command(f"set system ntp server {ntp_addr} prefer")
         output += netcon.commit()
         output += netcon.save_config()
         print(output)
