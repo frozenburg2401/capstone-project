@@ -1,5 +1,5 @@
 import paramiko
-from netmiko import ConnectHandler
+from netmiko import ConnectHandler, file_transfer
 
 #Note: ExOS specifies a limit on the size of the banner to be not more than 79 columns wide and 24 rows long
 #The docs for vyos do not specify a limit, it is likely close to the standard 80x24 terminal size though
