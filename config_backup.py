@@ -57,7 +57,7 @@ for device in (MLS1, MLS2, MLS3, R1, R2):
         #adding txt extension as there isnt a specified format for vyos config files
         tftp_path += ".txt"
         output = netcon.config_mode()
-        output += netcon.send_command(f"save tftp://{tftp_addr})
+        output += netcon.send_command(f"save tftp://{tftp_addr}/{tftp_path}")
         print(output)
     netcon.disconnect()
 
