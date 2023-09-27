@@ -3,7 +3,7 @@ import paramiko
 from netmiko import ConnectHandler
 
 MLS1 = {
-    "name": "MLS1"
+    "name": "MLS1",
     "device_type": "extreme_exos",
     "host": "205.169.134.1",
     "username": "admin",
@@ -11,7 +11,7 @@ MLS1 = {
 }
 
 MLS2 = {
-    "name": "MLS2"
+    "name": "MLS2",
     "device_type": "extreme_exos",
     "host": "205.169.130.1",
     "username": "admin",
@@ -19,7 +19,7 @@ MLS2 = {
 }
 
 MLS3 = {
-    "name": "MLS3"
+    "name": "MLS3",
     "device_type": "extreme_exos",
     "host": "205.169.132.1",
     "username": "admin",
@@ -27,7 +27,7 @@ MLS3 = {
 }
 
 R1 = {
-    "name": "R1"
+    "name": "R1",
     "device_type": "vyos_ssh",
     "host": "205.169.64.5",
     "username": "vyos",
@@ -35,7 +35,7 @@ R1 = {
 }
 
 R2 = {
-    "name": "R2"
+    "name": "R2",
     "device_type": "vyos_ssh",
     "host": "205.169.64.9",
     "username": "vyos",
